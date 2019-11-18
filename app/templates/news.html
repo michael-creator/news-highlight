@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    
-    <title>NEWS page</title>
-</head>
-<body>
-    <h1>WELCOME TO MY NEWS PAGE</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% macro displayarticleList(news_list) %}
+{% block content%}
+{% for article in article %}
+<div class="card" style="width: 25rem;">
+    <img class="card-img-top" src="{{ news.urlToImage}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ news.title}}</h5>
+      <h6 class="card-publishedAt">{{ news.publishedAt}}</h6>
+      <p class="card-author">{{ news.author}}</p>
+      <a href="{{ article.url}}" class="btn btn-primary">{{ news.title}</a>
+    </div>
+  </div>
+
+  {% endfor %}
+
+{% endblock content %}
+{% endmacro %}
