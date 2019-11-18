@@ -1,10 +1,17 @@
-from app inport app
-import unnitest
-from flask import Flask, render_template
+# from app import app
+from flask import render_template,request, redirect ,url_for
+from . import main
+from ..request import get_news
 
+@main.route('/')
+def index():
 
-@main.route("/")
-@main.route("/home")
-def home():
-    
-    return render_template()
+    output = get_news()
+
+    return render_template('index.html', name = output)
+
+@main.route('/news/sources')
+def news():
+
+    output = get_news()
+    return render_template('news.html')
